@@ -1,4 +1,6 @@
-import menu.HandleMenu;
+package main;
+
+import weathermenu.HandleMenu;
 
 import java.io.IOException;
 
@@ -9,6 +11,8 @@ public class Main {
             handleMenu.handleMainMenu();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 }

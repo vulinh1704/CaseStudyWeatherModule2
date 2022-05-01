@@ -1,4 +1,4 @@
-package menu;
+package weathermenu;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -81,13 +81,39 @@ public class UsingURL {
         return listGeneralInformation;
     }
 
-    public static void main(String[] args) throws IOException {
-        String[] strings = getGeneralInformation();
-        for (String s : strings) {
-            System.out.print(s + "\n");
+    public static String[] getRegionalForecasts() throws IOException {
+        String content = getContentFrom("https://www.nchmf.gov.vn/kttv/");
+        Pattern p = Pattern.compile("class=\"\\w{2}-\\w{8}\">(.*?)</a>");
+        Matcher m = p.matcher(content);
+        String disPlay = "";
+        while (m.find()) {
+            disPlay += m.group(1) + "\n";
         }
-
+        String[] listGeneralInformation = disPlay.split("\n");
+        return listGeneralInformation;
     }
 
+    public static String[] getTempInformationOfAreas() throws IOException {
+        String content = getContentFrom("https://www.nchmf.gov.vn/kttv/");
+        Pattern p = Pattern.compile("class=\"text-weather-location\">(.*?)</span>");
+        Matcher m = p.matcher(content);
+        String disPlay = "";
+        while (m.find()) {
+            disPlay += m.group(1) + "\n";
+        }
+        String[] listTempInformationOfAreas = disPlay.split("\n");
+        return listTempInformationOfAreas;
+    }
 
+    public static String[] getGeneralForecastsOfRegions() throws IOException {
+        String content = getContentFrom("https://www.nchmf.gov.vn/kttv/");
+        Pattern p = Pattern.compile("class=\"text-list-weather\">(.*?)</p>");
+        Matcher m = p.matcher(content);
+        String disPlay = "";
+        while (m.find()) {
+            disPlay += m.group(1) + "\n";
+        }
+        String[] listGeneralForecastsOfRegions = disPlay.split("\n");
+        return listGeneralForecastsOfRegions;
+    }
 }

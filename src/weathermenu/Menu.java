@@ -1,26 +1,43 @@
-package menu;
+package weathermenu;
 
 import java.io.IOException;
 import java.util.Locale;
 
 public class Menu {
 
-    public static void GeneralWeatherMenu() throws IOException {
+    public static void generalWeatherMenu() throws IOException {
         String[] listGeneralInformation = UsingURL.getGeneralInformation();
-        System.out.println(
+        System.out.println("-----KÊNH DỰ BÁO THỜI TIẾT NING7140-----\n" +
                 "1." + listGeneralInformation[2].toUpperCase(Locale.ROOT) + "\n" +
                 "2.HIỂN THỊ MENU\n" +
-                "0.THOÁT\n" +
+                "3.QUẢN LÝ TÀI KHOẢN\n" +
+                "0.ĐĂNG XUẤT\n" +
                 "Nhấn lựa chọn của bạn");
     }
 
-    public static void nearbyWeatherDisplay() {
-        System.out.println("1.THỜI TIẾT HIỆN TẠI\n" +
+    public static void menuAreas() throws IOException {
+        String[] listGeneralInformation = UsingURL.getRegionalForecasts();
+        System.out.println("-----THỜI TIẾT VIỆT NAM-----\n" +
+                "1.HÀ NỘI\n" +
+                "2." + listGeneralInformation[1].toUpperCase(Locale.ROOT) + "\n" +
+                "3." + listGeneralInformation[2].toUpperCase(Locale.ROOT) + "\n" +
+                "4." + listGeneralInformation[3].toUpperCase(Locale.ROOT) + "\n" +
+                "5." + listGeneralInformation[4].toUpperCase(Locale.ROOT) + "\n" +
+                "6." + listGeneralInformation[5].toUpperCase(Locale.ROOT) + "\n" +
+                "7." + listGeneralInformation[6].toUpperCase(Locale.ROOT) + "\n" +
+                "8.XEM LẠI MENU\n" +
+                "0.QUAY LẠI\n" +
+                "Nhấn lựa chọn của bạn");
+    }
+
+    public static void nearByWeatherDisplay() {
+        System.out.println("-----THỜI TIẾT HÀ NỘI-----\n" +
+                "1.THỜI TIẾT HIỆN TẠI\n" +
                 "2.DỰ BÁO THỜI TIẾT NGÀY HÔM NAY\n" +
                 "3.DỰ BÁO THỜI TIẾT ĐÊM HÔM NAY\n" +
                 "4.DỰ BÁO THỜI TIẾT 10 NGÀY TỚI\n" +
                 "5.HIỂN THỊ MENU\n" +
-                "0.THOÁT\n" +
+                "0.QUAY LẠI\n" +
                 "Nhấn lựa chọn của bạn");
     }
 
@@ -44,5 +61,14 @@ public class Menu {
         String dayCut = listForecastDate[index].replaceAll("(<)\\w{4}(>)", "");
         dayCut = dayCut.replaceAll("(</)\\w{4}(>)", "");
         return dayCut;
+    }
+
+    public static void AccountManagementMenu() {
+        System.out.println("-----QUẢN LÝ TÀI KHOẢN-----\n" +
+                "1.XEM THÔNG TIN CÁC TÀI KHOẢN CỦA BẠN\n" +
+                "2.XÓA TÀI KHOẢN\n" +
+                "3.ĐĂNG KÍ\n" +
+                "0.THOÁT"
+        );
     }
 }
