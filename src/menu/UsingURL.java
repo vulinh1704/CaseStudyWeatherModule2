@@ -57,10 +57,34 @@ public class UsingURL {
         return listForecastDate;
     }
 
+    public static String[] getTheDayInformationFromURL() throws IOException {
+        String content = getContentFrom("https://nchmf.gov.vn/Kttvsite/vi-VN/1/ha-noi-w28.html");
+        Pattern p = Pattern.compile("=\"\\w{5}-\\w{4}\">(.*?)(</span>)");
+        Matcher m = p.matcher(content);
+        String disPlay = "";
+        while (m.find()) {
+            disPlay += m.group(1) + "\n";
+        }
+        String[] listLargeTemp = disPlay.split("\n");
+        return listLargeTemp;
+    }
+
+    public static String[] getGeneralInformation() throws IOException {
+        String content = getContentFrom("https://www.nchmf.gov.vn/kttv/");
+        Pattern p = Pattern.compile("\\w\\d>(.*?)</\\w\\d>");
+        Matcher m = p.matcher(content);
+        String disPlay = "";
+        while (m.find()) {
+            disPlay += m.group(1) + "\n";
+        }
+        String[] listGeneralInformation = disPlay.split("\n");
+        return listGeneralInformation;
+    }
+
     public static void main(String[] args) throws IOException {
-        String[] strings = getForecastDate();
+        String[] strings = getGeneralInformation();
         for (String s : strings) {
-            System.out.print(s + " ");
+            System.out.print(s + "\n");
         }
 
     }

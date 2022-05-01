@@ -1,8 +1,19 @@
 package menu;
 
 import java.io.IOException;
+import java.util.Locale;
 
 public class Menu {
+
+    public static void GeneralWeatherMenu() throws IOException {
+        String[] listGeneralInformation = UsingURL.getGeneralInformation();
+        System.out.println(
+                "1." + listGeneralInformation[2].toUpperCase(Locale.ROOT) + "\n" +
+                "2.HIỂN THỊ MENU\n" +
+                "0.THOÁT\n" +
+                "Nhấn lựa chọn của bạn");
+    }
+
     public static void nearbyWeatherDisplay() {
         System.out.println("1.THỜI TIẾT HIỆN TẠI\n" +
                 "2.DỰ BÁO THỜI TIẾT NGÀY HÔM NAY\n" +
