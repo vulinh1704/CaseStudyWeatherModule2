@@ -285,13 +285,13 @@ public class HandleMenu {
     public void registrationProcessing() {
         Scanner scanner = new Scanner(System.in);
         Pattern pattern = Pattern.compile("((\\w{2,5}\\d{2,5})|(\\d{2,5}\\w{2,5}))");
-        System.out.println("-----ĐĂNG KÍ-----");
+        System.out.println("         \uD83D\uDCDD -----ĐĂNG KÍ----- \uD83D\uDCDD");
         String userName = "";
         Matcher matcherUs = null;
         String passWord = "";
         Matcher matcherPs = null;
         do {
-            System.out.println("NHẬP TÊN TÀI KHOẢN (2-5 kí tự chữ và 2-5 kí tự số)");
+            System.out.println("NHẬP TÊN TÀI KHOẢN (2-5 kí tự chữ và 2-5 kí tự số) \u2712");
             userName = scanner.nextLine();
             matcherUs = pattern.matcher(userName);
             if (!matcherUs.matches()) {
@@ -299,7 +299,7 @@ public class HandleMenu {
             }
         } while (!matcherUs.matches());
         do {
-            System.out.println("NHẬP MẬT KHẨU (2-5 kí tự chữ và 2-5 kí tự số)");
+            System.out.println("NHẬP MẬT KHẨU (2-5 kí tự chữ và 2-5 kí tự số) \uD83D\uDD10");
             passWord = scanner.nextLine();
             matcherPs = pattern.matcher(passWord);
             if (!matcherPs.matches()) {
@@ -319,10 +319,10 @@ public class HandleMenu {
         boolean checkLogin = true;
         do {
             for (Account account : accountManagement.getAccountList()) {
-                System.out.println("-----ĐĂNG NHẬP-----");
-                System.out.println("NHẬP TÊN TÀI KHOẢN");
+                System.out.println("        \uD83D\uDEC5 -----ĐĂNG NHẬP----- \uD83D\uDEC5");
+                System.out.println("NHẬP TÊN TÀI KHOẢN \u2712");
                 userName = scanner.nextLine();
-                System.out.println("NHẬP MẬT KHẨU");
+                System.out.println("NHẬP MẬT KHẨU \uD83D\uDD10");
                 passWord = scanner.nextLine();
                 if (account.getUserName().equals(userName) && account.getPassWord().equals(passWord)) {
                     System.out.println("ĐĂNG NHẬP THÀNH CÔNG !");
